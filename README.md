@@ -11,7 +11,7 @@
 ## 🌿 Sobre o Projeto
 O **Eco Heróis** é uma plataforma de **ciência cidadã e educação ambiental gamificada** que incentiva crianças, estudantes e comunidades a **identificar, mapear e combater o descarte irregular de resíduos**.  
 
-A aplicação web e mobile se integra ao **Eco Heróis Bot (WhatsApp)** e à **API Eco Heróis** para exibir relatórios, rankings, mapas de impacto e conquistas dos usuários — transformando a coleta de dados ambientais em uma experiência divertida e educativa.  
+A aplicação web se integra ao **Eco Heróis Bot (WhatsApp)** e à **API Eco Heróis** para exibir relatórios, rankings, mapas de impacto e conquistas dos usuários — transformando a coleta de dados ambientais em uma experiência divertida e educativa.  
 
 ---
 
