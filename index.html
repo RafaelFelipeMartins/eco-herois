@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#22c55e" />
+  <title>Eco Heróis — Coleta Gamificada</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Leaflet (Mapa) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+
+  <!-- Estilos Gerais -->
+  <link rel="stylesheet" href="styles.css" crossorigin=""/>
+</head>
+<body>
+  <div id="app">
+    <header id="appbar" class="appbar hidden" aria-label="Barra do aplicativo">
+      <div class="brand" aria-label="Eco Heróis">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>Eco Heróis</span>
+      </div>
+      <div class="app-actions">
+        <button id="btnRegisterCollectTop" class="btn btn-ghost" title="Registrar Coleta">
+          <i class="fa-solid fa-plus"></i> Coleta
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- LOGIN -->
+      <section id="view-login" class="view active" aria-label="Tela de Login">
+        <div class="login">
+          <div class="hero card" aria-hidden="false">
+            <span class="chip"><i class="fa-solid fa-seedling"></i> Planeta limpo começa aqui</span>
+            <h1>Bem-vindo, Herói!</h1>
+            <p>Ganhe pontos, conquiste insígnias e ajude sua cidade coletando lixo corretamente. Vamos jogar pelo planeta? ♻️</p>
+            <ul class="mb-0">
+              <li>• Coletas valem XP e sobem seu nível</li>
+              <li>• Veja seu nome no ranking</li>
+              <li>• Mapa com pontos da comunidade</li>
+            </ul>
+            <div class="kid-icon">🦸‍♂️</div>
+          </div>
+
+          <form id="loginForm" class="card" autocomplete="on">
+            <div class="grid">
+              <div>
+                <label for="heroName">Seu nome de herói</label>
+                <input id="heroName" class="input" type="text" minlength="2" maxlength="18" placeholder="Ex.: EcoNinja" required />
+              </div>
+              <div>
+                <label for="heroCity">Bairro/Cidade (opcional)</label>
+                <input id="heroCity" class="input" type="text" placeholder="Ex.: Boa Vista, Curitiba" />
+              </div>
+            </div>
+
+            <div class="mt-2">
+              <label>Escolha seu avatar</label>
+              <div class="avatar-grid" role="radiogroup" aria-label="Opções de avatar">
+                <!-- Avatares -->
+                <label class="avatar-option" data-avatar="🌱" aria-label="Avatar muda"><input type="radio" name="avatar" value="🌱" required />🌱</label>
+                <label class="avatar-option" data-avatar="🐢" aria-label="Avatar tartaruga"><input type="radio" name="avatar" value="🐢" />🐢</label>
+                <label class="avatar-option" data-avatar="🐝" aria-label="Avatar abelha"><input type="radio" name="avatar" value="🐝" />🐝</label>
+                <label class="avatar-option" data-avatar="🐸" aria-label="Avatar sapo"><input type="radio" name="avatar" value="🐸" />🐸</label>
+                <label class="avatar-option" data-avatar="🦉" aria-label="Avatar coruja"><input type="radio" name="avatar" value="🦉" />🦉</label>
+                <label class="avatar-option" data-avatar="🤖" aria-label="Avatar robô"><input type="radio" name="avatar" value="🤖" />🤖</label>
+              </div>
+            </div>
+
+            <div class="login-actions mt-3">
+              <button class="btn btn-primary" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Entrar</button>
+              <button class="btn" type="button" id="btnGuest"><i class="fa-solid fa-child-reaching"></i> Entrar como convidado</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- RANKING -->
+      <section id="view-ranking" class="view" aria-label="Tela de Ranking">
+        <div class="row">
+          <h2 class="mb-0">🏆 Top Heróis</h2>
+          <span class="chip" id="rankingTotal"></span>
+        </div>
+        <div class="podium" id="podium"></div>
+        <div class="card" id="rankingList" aria-live="polite"></div>
+      </section>
+
+      <!-- PERFIL -->
+      <section id="view-profile" class="view" aria-label="Tela de Perfil">
+        <div class="card">
+          <div class="profile-head">
+            <div class="big-avatar" id="profileAvatar" aria-hidden="true">🌱</div>
+            <div>
+              <div class="row">
+                <h2 id="profileName" class="mb-0">Herói</h2>
+                <span class="level"><i class="fa-solid fa-star"></i> Nível <span id="profileLevel">1</span></span>
+              </div>
+              <div class="progress mt-2" aria-label="Progresso de XP" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span id="xpBar" style="width:0%"></span>
+              </div>
+              <small id="xpText" class="muted">0 / 100 XP</small>
+            </div>
+          </div>
+
+          <div class="stats mt-3">
+            <div class="stat">
+              <div class="muted">Coletas</div>
+              <div id="statCollects" class="big fw">0</div>
+            </div>
+            <div class="stat">
+              <div class="muted">Pontos</div>
+              <div id="statPoints" class="big fw">0</div>
+            </div>
+            <div class="stat">
+              <div class="muted">Missões</div>
+              <div id="statMissions" class="big fw">0</div>
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <button id="btnRegisterCollect" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Registrar Coleta</button>
+            <button id="btnEditProfile" class="btn"><i class="fa-solid fa-pen"></i> Editar</button>
+            <button id="btnLogout" class="btn"><i class="fa-solid fa-right-from-bracket"></i> Sair</button>
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="row">
+            <h3 class="mb-0">🏅 Insígnias</h3>
+            <small id="badgeHint" class="muted">Conquiste fazendo coletas</small>
+          </div>
+          <div id="badgesGrid" class="badges mt-2"></div>
+        </div>
+      </section>
+
+      <!-- MAPA -->
+      <section id="view-map" class="view" aria-label="Mapa de coletas">
+        <div id="map" role="application" aria-label="Mapa"></div>
+        <div class="map-actions">
+          <button id="btnLocate" class="btn"><i class="fa-solid fa-location-crosshairs"></i> Localizar-me</button>
+          <button id="btnAddMap" class="btn"><i class="fa-solid fa-map-pin"></i> Adicionar ponto manual</button>
+          <span class="chip"><i class="fa-solid fa-hand-pointer"></i> Toque no mapa para ver detalhes</span>
+        </div>
+      </section>
+    </main>
+
+    <nav id="tabbar" class="tabbar hidden" aria-label="Navegação por abas">
+      <button class="tab active" data-target="#view-ranking"><i class="fa-solid fa-trophy"></i><span>Ranking</span></button>
+      <button class="tab" data-target="#view-profile"><i class="fa-solid fa-user"></i><span>Perfil</span></button>
+      <button class="tab" data-target="#view-map"><i class="fa-solid fa-map-location-dot"></i><span>Mapa</span></button>
+    </nav>
+
+    <div class="toast-wrap" aria-live="polite" aria-atomic="true"></div>
+  </div>
+
+  <!-- Dependencies -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="script.js" crossorigin=""></script>
+</body>
+</html>
