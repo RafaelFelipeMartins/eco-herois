@@ -516,3 +516,52 @@ label {
 .mb-0 {
     margin-bottom: 0;
 }
+
+.user-row {
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-row:hover {
+  background: #dcfce7;
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(34,197,94,0.15);
+}
+
+.podium .slot {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+.podium .slot:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(34,197,94,0.3);
+}
+
+.btn {
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+.btn:hover {
+  filter: brightness(1.08);
+  transform: scale(1.03);
+}
+.btn-primary:hover {
+  background: linear-gradient(90deg, #f0fdf4, #fefce8);
+}
+
+.tab {
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.tab:hover {
+  background: #dcfce7;
+  color: var(--primary-600);
+  transform: scale(1.05);
+  box-shadow: 0 0 0 4px var(--ring);
+}
+
+.leaflet-marker-icon {
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.leaflet-marker-icon:hover {
+  transform: scaleY(2);
+  filter: brightness(1.1) invert(100%);
+  z-index: 1000; /* Garante que o marcador fique por cima dos outros */
+}
