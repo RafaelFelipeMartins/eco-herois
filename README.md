@@ -51,3 +51,8 @@ A aplicação web e mobile se integra ao **Eco Heróis Bot (WhatsApp)** e à **A
 1. **Clone o repositório:**
    ```bash
    git clone https://github.com/RafaelFelipeMartins/eco-herois.git .
+
+2. Instale as dependências:
+```sh
+npm install
+```
