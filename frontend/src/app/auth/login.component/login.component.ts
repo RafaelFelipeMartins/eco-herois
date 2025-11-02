@@ -10,7 +10,7 @@ import { InputTextModule } from 'primeng/inputtext';
   standalone: true,
   imports: [DividerModule, ButtonModule, InputTextModule]
 })
-export class loginComponent {
+export class LoginComponent {
   constructor(){
 
   }

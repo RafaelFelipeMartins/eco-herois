@@ -1,0 +1,42 @@
+<div class="app-container">
+
+  <!-- Painel superior -->
+  <header class="top-panel">
+    <div class="score">
+      <i class="pi pi-star"></i>
+      <span>45</span>
+    </div>
+    <div class="score">
+      <i class="pi pi-stop-circle"></i>
+      <span>45</span>
+    </div>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main class="main-content">
+    <div class="circle-button-container">
+      <p-button
+        *ngFor="let b of buttons"
+        [icon]="b.icon"
+        [label]="b.label"
+        (onClick)="b.action()"
+        class="circle-button"
+      ></p-button>
+    </div>
+  </main>
+
+  <!-- Dock inferior -->
+  <footer class="bottom-dock">
+    <p-dock [model]="dockItems" position="bottom">
+      <ng-template #item let-item>
+        <img
+          [pTooltip]="item.label"
+          tooltipPosition="top"
+          [src]="item.icon"
+          [alt]="item.label"
+          width="100%"
+        />
+      </ng-template>
+    </p-dock>
+  </footer>
+</div>
