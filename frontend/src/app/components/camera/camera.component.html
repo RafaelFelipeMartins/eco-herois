@@ -1,30 +1,13 @@
-<div class="camera-page">
-  <header class="camera-header">
-    <h2>Registrar Local</h2>
-  </header>
+<p-toast></p-toast>
 
-  <main class="camera-content">
-    <!-- Preview -->
-    <img *ngIf="preview" [src]="preview" alt="foto" class="preview" />
-
-    <!-- Botão de captura -->
-    <label class="camera-button">
-      <input
-        type="file"
-        accept="image/*"
-        capture="environment"
-        (change)="onFileSelected($event)"
-      />
-      <i class="pi pi-camera"></i>
-    </label>
-
-    <!-- Enviar -->
-    <button
-      *ngIf="preview"
-      class="send-button"
-      (click)="sendImage()"
-    >
-      Enviar foto
-    </button>
-  </main>
-</div>
+<p-fileupload
+  mode="basic"
+  name="demo[]"
+  chooseIcon="pi pi-upload"
+  chooseLabel="Selecionar"
+  [auto]="true"
+  accept="image/*"
+  maxFileSize="1000000"
+  url="https://www.primefaces.org/cdn/api/upload.php"
+  (onUpload)="onBasicUploadAuto($event)"
+></p-fileupload>

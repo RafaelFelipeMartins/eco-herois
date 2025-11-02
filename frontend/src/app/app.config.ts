@@ -10,6 +10,8 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimationsAsync(),
     providePrimeNG({
+      ripple: true, // ativa o efeito de clique
+      inputStyle: 'outlined',
       theme: {
         preset: Aura
       }

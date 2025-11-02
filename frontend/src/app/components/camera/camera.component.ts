@@ -1,41 +1,36 @@
 import { Component } from '@angular/core';
+import { MessageService } from 'primeng/api';
+import { FileUploadModule, FileUploadEvent } from 'primeng/fileupload';
+import { ButtonModule } from 'primeng/button';
+import { BadgeModule } from 'primeng/badge';
+import { ToastModule } from 'primeng/toast';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-camera',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './camera.component.html',
-  styleUrls: ['./camera.component.scss']
+  styleUrls: ['./camera.component.scss'],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    FileUploadModule,
+    ButtonModule,
+    BadgeModule,
+    ToastModule
+  ],
+  providers: [MessageService]
 })
 export class CameraComponent {
-  preview?: string;
-  selectedFile?: File;
+  constructor(private messageService: MessageService) {}
 
-  constructor(private http: HttpClient) {}
-
-  onFileSelected(event: any) {
-    const file = event.target.files[0];
-    if (!file) return;
-    this.selectedFile = file;
-
-    const reader = new FileReader();
-    reader.onload = () => (this.preview = reader.result as string);
-    reader.readAsDataURL(file);
-  }
-
-  sendImage() {
-    if (!this.selectedFile) return;
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      const base64 = reader.result as string;
-      this.http.post('http://localhost:3000/api/capture', { imageBase64: base64 }).subscribe({
-        next: () => alert('Imagem enviada com sucesso!'),
-        error: (err) => alert('Erro ao enviar: ' + err.message)
-      });
-    };
-    reader.readAsDataURL(this.selectedFile);
+  onBasicUploadAuto(event: FileUploadEvent) {
+    console.log('Upload OK →', event);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Sucesso',
+      detail: 'Arquivo enviado com sucesso (auto-mode)'
+    });
   }
 }

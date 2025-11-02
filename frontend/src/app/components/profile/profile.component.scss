@@ -1,0 +1,118 @@
+.card {
+  padding-top: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: #fff;
+  gap: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+.avatar {
+  align-content: center;
+  justify-content: center;
+  display: flex;
+}
+
+.meter-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.meter-card {
+  flex: 1 1 180px;
+  border: 1px solid var(--surface-border, #e5e7eb);
+  border-radius: 10px;
+  padding: 12px;
+}
+.meter-card-content {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+}
+.meter-info { display: flex; flex-direction: column; gap: 4px; }
+.meter-label { color: #6b7280; font-size: .9rem; }
+.meter-value { font-weight: 700; font-size: 1.1rem; }
+.meter-icon {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center; color: #fff;
+}
+
+.meter-stack {
+  height: 14px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #f3f4f6;
+  display: flex;
+}
+.meter-chunk { height: 100%; }
+
+.meter-footer {
+  margin-top: 14px;
+  display: flex; gap: 12px; justify-content: space-between;
+}
+
+/* altura do dock (se você tiver um p-dock fixo). Ajuste conforme seu layout. */
+:root { --dock-height: 72px; }
+
+.achievements-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  /* se NÃO tiver dock, troque por bottom: 0; */
+  bottom: var(--dock-height);
+  z-index: 900; /* abaixo do dock (que costuma ficar ~999) */
+  min-height: 40px; /* >= 30px como você pediu */
+  background: #ffffffcc; /* leve translucidez */
+  backdrop-filter: blur(6px);
+  border-top: 1px solid var(--surface-border, #e5e7eb);
+  padding: 6px 10px;
+}
+
+.achievements-track {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  align-items: center;
+}
+
+/* insígnia/chip */
+.ach-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--surface-border, #e5e7eb);
+  background: #fff;
+  padding: 4px 8px;
+  border-radius: 999px;
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+
+.ach-chip i {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.ach-name {
+  font-size: 0.85rem;
+  color: #374151;
+  font-weight: 600;
+}
+
+/* badge de contagem / nível */
+.ach-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: #10b981;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
