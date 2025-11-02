@@ -1,81 +1,88 @@
-.login-container {
-  display: flex;
-  padding-top: 200px;
-  flex-direction: column;
-  align-items: stretch;
+/* Fundo bege e centralização */
+.login-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #efe7d7; /* bege do mock */
+  padding: 1rem;
+}
+
+.sr-only{
+    color:#325440;
+}
+
+/* Cartão */
+.form-card {
   width: 100%;
-  box-sizing: border-box;
-
-  @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
+  max-width: 360px;
+  background: #fbf4e8; /* off-white quente */
+  border-radius: 20px;
+  padding: 1.75rem 1.25rem;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
-.login-column {
-  width: 100%;
-  padding: 1.5rem 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.form-column {
-  @media (min-width: 768px) {
-    width: 40%;
-  }
-}
-
-.signup-column {
-  @media (min-width: 768px) {
-    width: 40%;
-  }
-}
-
+/* Campos */
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: .5rem;
   margin-bottom: 1rem;
-  width: 100%;
-  max-width: 280px;
 
   label {
+    font-size: .85rem;
+    color: #5b5b5b;
     font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
+}
 
-  input {
+/* Estilos específicos do PrimeNG dentro do componente */
+:host ::ng-deep {
+  /* Input */
+  .p-inputtext {
     width: 100%;
+    background: #dfeacb;               /* verde claro do mock */
+    border: 1px solid #c7d7ad;
+    border-radius: 10px;
+    padding: .65rem .75rem;
+    color: #2f3a2f;
+    box-shadow: none;
+
+    &::placeholder { color: #7b8a6d; opacity: .9; }
+    &:focus { border-color: #9fbb75; outline: none; box-shadow: 0 0 0 2px rgba(159,187,117,.2); }
   }
 
-  .full-btn {
+  /* Botão */
+  .p-button.full-btn {
     width: 100%;
+    margin-top: .5rem;
+    background: #2f4f2f !important;    /* verde escuro */
+    border: 1px solid #2a472a !important;
+    color: #ffffff !important;
+    border-radius: 10px;
+    padding: .75rem 1rem;
+    text-transform: lowercase;          /* “login” minúsculo igual ao mock */
+    font-weight: 600;
+
+    &:hover {
+      background: #274527 !important;
+      border-color: #223d22 !important;
+    }
   }
 }
 
-/* Divider responsiveness */
-.divider-column {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  @media (min-width: 768px) {
-    width: 20%;
-  }
+/* Link “esqueceu sua senha?” */
+.forgot {
+  display: block;
+  text-align: center;
+  margin-top: .85rem;
+  font-size: .85rem;
+  color: #bf6a2c;     /* laranja queimado */
+  text-decoration: none;
+
+  &:hover { text-decoration: underline; }
 }
 
-.divider-vertical {
-  display: none !important;
-  @media (min-width: 768px) {
-    display: flex !important;
-  }
-}
-
-.divider-horizontal {
-  display: flex !important;
-  @media (min-width: 768px) {
-    display: none !important;
-  }
-}
+/* Se quiser manter sua estrutura original e só esconder o que sobra: */
+.login-container, .divider-column, .signup-column { display: none; }

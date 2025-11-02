@@ -1,32 +1,19 @@
-<div class="login-container">
-  <div class="login-column form-column">
+<div class="login-screen">
+  <div class="form-card">
+    <h2 class="sr-only">Tela de Login Aluno</h2>
+
     <div class="field">
-      <label for="username">Nome de usuário</label>
-      <input pInputText id="username" type="text" />
+      <label for="username">Email</label>
+      <input pInputText id="username" type="email" placeholder="email@gmail.com" />
     </div>
 
     <div class="field">
       <label for="password">Senha</label>
-      <input pInputText id="password" type="password" />
+      <input pInputText id="password" type="password" placeholder="********" />
     </div>
 
-    <div class="field">
-      <p-button label="Login"  icon="pi pi-user" styleClass="full-btn" />
-    </div>
-    <div class="field">
-      <p-button label="Cadastre-se"  icon="pi pi-user" styleClass="full-btn" />
-    </div>
-  </div>
+    <button pButton label="login" class="full-btn p-button-rounded"></button>
 
-  <div class="divider-column">
-    <p-divider layout="vertical" class="divider-vertical"><b>OR</b></p-divider>
-    <p-divider layout="horizontal" class="divider-horizontal" align="center"><b>OR</b></p-divider>
-  </div>
-
-  <div class="login-column signup-column">
-    <p-button label="RESPONSAVEL ESCOLAR" icon="pi pi-user-plus" severity="success" styleClass="full-btn" />
-  </div>
-  <div class="login-column signup-column">
-    <p-button label="SOU ONG" icon="pi pi-user-plus" severity="success" styleClass="full-btn" />
+    <a class="forgot" href="javascript:void(0)">esqueceu sua senha?</a>
   </div>
 </div>
