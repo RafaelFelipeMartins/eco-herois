@@ -21,29 +21,13 @@ A aplicação web se integra ao **Eco Heróis Bot (WhatsApp)** e à **API Eco He
 - 🗺️ **Mapa Interativo** com pontos de descarte mapeados  
 - 🧠 **Integração com o Bot e API** para exibir relatórios enviados via WhatsApp  
 - 🏆 **Ranking Gamificado** com pontuação por ações sustentáveis  
-- 🥇 **Painel de Conquistas (Insígnias)** para engajar estudantes  
-- 👤 **Perfil do Usuário** com histórico e estatísticas  
+- 🥇 **Painel de Conquistas (Insígnias)** para engajar estudantes   
 - 📱 **Layout responsivo e acessível** (desktop e mobile)
 
 ---
 
 ## 🧰 Tecnologias Utilizadas
-
-- **Frontend:** HTML5, CSS3, JavaScript (jQuery) ou Vue.js / Ionic (dependendo da versão)  
-- **Backend:** Node.js + Express (API Eco Heróis)  
-- **Banco de Dados:** PostgreSQL + Knex  
-- **Mapas:** Leaflet.js / OpenStreetMap  
-- **IA:** OpenAI GPT-4 Vision (via integração com o bot)  
-- **Hospedagem:** Render / Vercel / Railway  
-
----
-
-## 📋 Pré-requisitos
-
-- Node.js (v18+ recomendado)  
-- Navegador moderno  
-- Conexão com o backend (`eco-herois-api`)  
-
+- **Frontend:** HTML5, CSS3, JavaScript (jQuery) 
 ---
 
 ## ⚙️ Instalação e Execução
@@ -52,7 +36,4 @@ A aplicação web se integra ao **Eco Heróis Bot (WhatsApp)** e à **API Eco He
    ```bash
    git clone https://github.com/RafaelFelipeMartins/eco-herois.git .
 
-2. Instale as dependências:
-```sh
-npm install
-```
+2. Abra o arquivo HTML no navegador
