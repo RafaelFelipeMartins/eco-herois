@@ -1,0 +1,81 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.login-column {
+  width: 100%;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-column {
+  @media (min-width: 768px) {
+    width: 40%;
+  }
+}
+
+.signup-column {
+  @media (min-width: 768px) {
+    width: 40%;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 280px;
+
+  label {
+    font-weight: 600;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .full-btn {
+    width: 100%;
+  }
+}
+
+/* Divider responsiveness */
+.divider-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  @media (min-width: 768px) {
+    width: 20%;
+  }
+}
+
+.divider-vertical {
+  display: none !important;
+  @media (min-width: 768px) {
+    display: flex !important;
+  }
+}
+
+.divider-horizontal {
+  display: flex !important;
+  @media (min-width: 768px) {
+    display: none !important;
+  }
+}
