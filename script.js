@@ -288,9 +288,22 @@ function addMarkerToLayer(r) {
 }
 
 function renderReportsOnMap() {
+    const locations = [
+        { id: "r1", userId: "u1", name: "EcoNinja",  avatar: "🐝", when: new Date().toISOString(), lat: -25.4494, lng: -49.2711 },
+        { id: "r2", userId: "u2", name: "Tartarugo", avatar: "🐢", when: new Date().toISOString(), lat: -25.4222, lng: -49.3256 },
+        { id: "r3", userId: "u3", name: "Folhinha",  avatar: "🌱", when: new Date().toISOString(), lat: -25.4111, lng: -49.2232 },
+        { id: "r4", userId: "u4", name: "Corujito",  avatar: "🦉", when: new Date().toISOString(), lat: -20.4317, lng: -49.2760 },
+        { id: "r5", userId: "u5", name: "VerdeTech", avatar: "🤖", when: new Date().toISOString(), lat: -25.4324, lng: -49.2912 },
+        { id: "r6", userId: "u6", name: "SapoZap",   avatar: "🐸", when: new Date().toISOString(), lat: -25.4191, lng: -49.2728 },
+        { id: "r7", userId: "u7", name: "Limpinha",  avatar: "🧤", when: new Date().toISOString(), lat: -24.4283, lng: -49.2689 },
+        { id: "r8", userId: "u8", name: "EcoGirl",   avatar: "🦸‍♀️", when: new Date().toISOString(), lat: -25.4335, lng: -49.2774 },
+        { id: "r9", userId: "u9", name: "RecicLéo",  avatar: "🦁", when: new Date().toISOString(), lat: -25.4040, lng: -49.3018 },
+        { id: "r10", userId: "u10", name: "Guardião Verde", avatar: "🍃", when: new Date().toISOString(), lat: -25.4265, lng: -49.2749 },
+        { id: "r11", userId: "u11", name: "Folhinha", avatar: "🌱", when: new Date().toISOString(), lat: -25.516837, lng: -49.2731 }
+    ];
     if (!layer) return;
     layer.clearLayers();
-    const list = readLS(STORAGE.reports, []);
+    const list = readLS(STORAGE.reports, locations);
     list.filter(r => r.lat && r.lng).forEach(addMarkerToLayer);
 }
 
